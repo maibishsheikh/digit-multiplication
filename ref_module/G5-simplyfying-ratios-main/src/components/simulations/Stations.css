@@ -1,0 +1,618 @@
+/* src/components/simulations/Stations.css */
+
+/* ─── Main Station Container ────────────────────────────────────────────── */
+.station-wrap {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: clamp(10px, 1.6vw, 20px) clamp(10px, 1.8vw, 24px);
+  gap: clamp(10px, 1.4vh, 16px);
+  position: relative;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+/* ─── Station Header & Badges ───────────────────────────────────────────── */
+.station-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
+  flex-shrink: 0;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.station-title {
+  color: var(--gold);
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(1.05rem, 1.4vw, 1.35rem);
+  line-height: 1.25;
+}
+
+.station-target-box {
+  background: rgba(255, 193, 7, 0.14);
+  border: 1.5px solid rgba(255, 193, 7, 0.4);
+  border-radius: var(--radius-md, 12px);
+  padding: 4px 14px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.station-target-label {
+  font-family: var(--font-body);
+  font-size: clamp(0.8rem, 0.95vw, 0.9rem);
+  font-weight: 800;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.station-target-num {
+  color: var(--gold);
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: clamp(1.25rem, 1.8vw, 1.65rem);
+  line-height: 1;
+}
+
+/* ─── 2-Column Responsive Grid ──────────────────────────────────────────── */
+.station-grid-2col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(12px, 1.8vw, 20px);
+  align-items: stretch;
+  flex: 1;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.station-col-left,
+.station-col-right {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: clamp(8px, 1.2vh, 14px);
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* ─── Station A: Fruit Sorter ───────────────────────────────────────────── */
+.fruit-supply {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.fruit-supply-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 6px 10px;
+  border-radius: var(--radius-md, 12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.fruit-btn {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  border-radius: var(--radius-sm, 10px);
+  padding: 8px 14px;
+  min-height: 48px;
+  cursor: pointer;
+  border: none;
+  transition: var(--transition);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+  color: #ffffff;
+  box-sizing: border-box;
+}
+
+.fruit-btn:hover:not(:disabled) {
+  transform: translateY(-1px);
+  filter: brightness(1.1);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
+}
+
+.fruit-btn:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.fruit-btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.fruit-btn-info {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+}
+
+.fruit-icon {
+  font-size: 1.45rem;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+.fruit-label {
+  font-family: var(--font-display);
+  font-size: clamp(0.9rem, 1.1vw, 1.05rem);
+  font-weight: 800;
+  color: #fff;
+  white-space: nowrap;
+}
+
+.fruit-count-pill {
+  font-family: var(--font-display);
+  font-size: clamp(0.95rem, 1.2vw, 1.15rem);
+  font-weight: 900;
+  background: rgba(0, 0, 0, 0.3);
+  padding: 3px 10px;
+  border-radius: var(--radius-pill, 9999px);
+  border: 1.5px solid rgba(255, 255, 255, 0.22);
+  color: #ffffff;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.fruit-minus {
+  width: 42px;
+  height: 42px;
+  min-width: 42px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1.5px solid rgba(255, 255, 255, 0.2);
+  color: #fff;
+  font-size: 1.35rem;
+  font-weight: 900;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: var(--transition);
+  flex-shrink: 0;
+}
+
+.fruit-minus:hover:not(:disabled) {
+  background: rgba(239, 83, 80, 0.45);
+  border-color: rgba(239, 83, 80, 0.7);
+  color: #ffffff;
+}
+
+.fruit-minus:disabled {
+  opacity: 0.25;
+  cursor: not-allowed;
+}
+
+.fruit-baskets-area {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  justify-content: center;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.running-ratio-bar {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  background: rgba(255, 255, 255, 0.06);
+  padding: 8px 14px;
+  border-radius: var(--radius-md, 12px);
+  border: 1.5px solid rgba(255, 255, 255, 0.12);
+  text-align: center;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.running-ratio-text {
+  font-family: var(--font-display);
+  font-size: clamp(0.98rem, 1.25vw, 1.22rem);
+  font-weight: 800;
+  color: var(--gold);
+  line-height: 1.35;
+}
+
+/* ─── Station B: GCF Simplifier Lab ─────────────────────────────────────── */
+.gcf-chips-pool {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 10px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1.5px dashed rgba(255, 255, 255, 0.18);
+  border-radius: var(--radius-md, 14px);
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.gcf-chip {
+  padding: 8px 16px;
+  border-radius: var(--radius-md, 12px);
+  font-family: var(--font-display);
+  font-size: clamp(1.05rem, 1.3vw, 1.25rem);
+  font-weight: 800;
+  cursor: pointer;
+  transition: var(--transition);
+  border: 2px solid rgba(255, 255, 255, 0.18);
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  user-select: none;
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--text-primary);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.gcf-chip:hover:not(:disabled) {
+  transform: translateY(-1px);
+  border-color: var(--gold);
+  color: var(--gold);
+  background: rgba(255, 193, 7, 0.2);
+}
+
+.gcf-chip.correct {
+  border-color: var(--green);
+  background: rgba(76, 175, 80, 0.4);
+  color: #86efac;
+}
+
+.gcf-chip.wrong {
+  border-color: var(--red);
+  background: rgba(239, 83, 80, 0.35);
+  color: #fca5a5;
+}
+
+.gcf-equation-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px 14px;
+  background: rgba(255, 255, 255, 0.07);
+  border-radius: var(--radius-md, 12px);
+  border: 1.5px solid rgba(255, 202, 40, 0.35);
+  flex-wrap: wrap;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.gcf-term {
+  font-family: var(--font-display);
+  font-size: clamp(1.25rem, 1.8vw, 1.6rem);
+  font-weight: 900;
+  color: #ffffff;
+}
+
+.gcf-op {
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  font-weight: 900;
+  color: var(--gold);
+}
+
+/* ─── Station C: Live Slider Station ────────────────────────────────────── */
+.scale-slider-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  background: rgba(255, 255, 255, 0.06);
+  padding: 12px 16px;
+  border-radius: var(--radius-md, 12px);
+  border: 1.5px solid rgba(255, 255, 255, 0.1);
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.scale-factor-display {
+  font-family: var(--font-display);
+  font-size: clamp(1.3rem, 2vw, 1.7rem);
+  font-weight: 900;
+  color: var(--gold);
+}
+
+.scale-range-input {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  max-width: 400px;
+  height: 9px;
+  border-radius: 5px;
+  background: rgba(255, 255, 255, 0.25);
+  outline: none;
+  cursor: pointer;
+}
+
+.scale-range-input::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: var(--gold);
+  cursor: pointer;
+  box-shadow: 0 0 10px rgba(255, 193, 7, 0.8);
+}
+
+.slider-ticks-row {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 400px;
+  font-size: 0.88rem;
+  font-weight: 800;
+  color: var(--text-muted);
+}
+
+/* ─── Station D: Spot Error Station ─────────────────────────────────────── */
+.spot-steps-list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.spot-step-card {
+  padding: 8px 12px;
+  border-radius: var(--radius-md, 12px);
+  font-family: var(--font-display);
+  cursor: pointer;
+  transition: var(--transition);
+  border: 1.5px solid rgba(255, 255, 255, 0.18);
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--text-primary);
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  gap: 8px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.spot-step-card:hover:not(.selected-error) {
+  border-color: var(--gold);
+  transform: translateY(-1px);
+  background: rgba(255, 193, 7, 0.15);
+}
+
+.spot-step-card.selected-error {
+  background: rgba(76, 175, 80, 0.35);
+  border-color: var(--green);
+}
+
+.spot-step-card.selected-correct-step {
+  border-color: var(--red);
+  background: rgba(239, 83, 80, 0.3);
+}
+
+/* ─── Guide / Help Cards ────────────────────────────────────────────────── */
+.station-guide-card {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1.5px dashed rgba(255, 255, 255, 0.18);
+  border-radius: var(--radius-md, 12px);
+  padding: 10px 14px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.station-guide-text {
+  font-family: var(--font-body);
+  font-size: clamp(0.92rem, 1.1vw, 1.05rem);
+  color: var(--text-secondary);
+  line-height: 1.35;
+}
+
+/* ─── Success / Completion Panel ────────────────────────────────────────── */
+.station-success {
+  background: rgba(20, 20, 58, 0.95);
+  border: 2px solid rgba(34, 197, 94, 0.55);
+  border-radius: var(--radius-md, 14px);
+  padding: 12px 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  text-align: center;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.station-success .success-icon {
+  font-size: 1.8rem;
+  line-height: 1;
+}
+
+.station-success-msg {
+  font-family: var(--font-body);
+  font-size: clamp(0.95rem, 1.15vw, 1.1rem);
+  color: #ffffff;
+  line-height: 1.35;
+  font-weight: 700;
+}
+
+.station-success-actions {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.station-success-actions button {
+  padding: 8px 18px;
+  font-size: clamp(0.92rem, 1.1vw, 1.05rem);
+  font-weight: 800;
+  min-height: 44px;
+  flex: 1 1 120px;
+}
+
+/* ─── Station Action Buttons Row ────────────────────────────────────────── */
+.station-actions {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-start;
+  margin-top: auto;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.station-actions button {
+  padding: 8px 18px;
+  min-height: 44px;
+  flex: 1 1 105px;
+  font-size: clamp(0.92rem, 1.1vw, 1.05rem);
+  font-weight: 800;
+}
+
+/* ─── Responsive Media Queries ──────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .station-wrap {
+    padding: 10px 10px;
+    gap: 8px;
+  }
+  
+  .station-grid-2col {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+  
+  .station-col-left,
+  .station-col-right {
+    gap: 8px;
+  }
+  
+  .fruit-supply {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  
+  .fruit-btn {
+    min-height: 46px;
+    padding: 6px 12px;
+  }
+  
+  .fruit-minus {
+    width: 40px;
+    height: 40px;
+    min-width: 40px;
+  }
+  
+  .station-actions {
+    justify-content: center;
+    width: 100%;
+  }
+  
+  .station-actions button {
+    flex: 1 1 100px;
+    min-height: 42px;
+    padding: 6px 12px;
+    font-size: 0.88rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .station-wrap {
+    padding: 8px 6px;
+    gap: 6px;
+  }
+  
+  .station-title {
+    font-size: 0.98rem;
+  }
+  
+  .station-target-box {
+    padding: 3px 10px;
+  }
+  
+  .station-target-num {
+    font-size: 1.2rem;
+  }
+  
+  .fruit-btn {
+    min-height: 44px;
+    padding: 6px 10px;
+  }
+  
+  .fruit-icon {
+    font-size: 1.3rem;
+  }
+  
+  .fruit-label {
+    font-size: 0.88rem;
+  }
+  
+  .fruit-count-pill {
+    font-size: 0.9rem;
+    padding: 2px 7px;
+  }
+  
+  .fruit-minus {
+    width: 38px;
+    height: 38px;
+    min-width: 38px;
+    font-size: 1.25rem;
+  }
+  
+  .gcf-chip {
+    padding: 6px 12px;
+    min-height: 40px;
+    font-size: 1rem;
+  }
+  
+  .gcf-equation-box {
+    padding: 8px 10px;
+    gap: 6px;
+  }
+  
+  .gcf-term {
+    font-size: 1.2rem;
+  }
+  
+  .spot-step-card {
+    padding: 6px 10px;
+    min-height: 40px;
+  }
+  
+  .station-actions button,
+  .station-success-actions button {
+    min-height: 42px;
+    padding: 6px 10px;
+    font-size: 0.86rem;
+  }
+}

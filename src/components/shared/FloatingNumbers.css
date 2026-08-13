@@ -1,0 +1,22 @@
+/* src/components/shared/FloatingNumbers.css */
+.floating-bg {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.float-sym {
+  position: absolute;
+  font-family: var(--font-display);
+  font-weight: 800;
+  color: #ffc107;
+  animation: floatAnim 6s ease-in-out infinite alternate;
+  user-select: none;
+}
+
+@keyframes floatAnim {
+  0%   { transform: translateY(0px) rotate(0deg); }
+  100% { transform: translateY(-24px) rotate(10deg); }
+}

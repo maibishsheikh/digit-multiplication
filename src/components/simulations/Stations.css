@@ -1,0 +1,861 @@
+/* src/components/simulations/Stations.css */
+
+/* ─── Main Station Container ────────────────────────────────────────────── */
+.station-wrap {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: clamp(10px, 1.6vw, 20px) clamp(10px, 1.8vw, 24px);
+  gap: clamp(10px, 1.4vh, 16px);
+  position: relative;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+/* ─── Station Header & Badges ───────────────────────────────────────────── */
+.station-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
+  flex-shrink: 0;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.station-title {
+  color: var(--gold);
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(1.05rem, 1.4vw, 1.35rem);
+  line-height: 1.25;
+}
+
+.station-target-box {
+  background: rgba(255, 193, 7, 0.14);
+  border: 1.5px solid rgba(255, 193, 7, 0.4);
+  border-radius: var(--radius-md, 12px);
+  padding: 4px 14px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.station-target-label {
+  font-family: var(--font-body);
+  font-size: clamp(0.8rem, 0.95vw, 0.9rem);
+  font-weight: 800;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.station-target-num {
+  color: var(--gold);
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: clamp(1.25rem, 1.8vw, 1.65rem);
+  line-height: 1;
+}
+
+/* ─── 2-Column Responsive Grid ──────────────────────────────────────────── */
+.station-grid-2col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(12px, 1.8vw, 20px);
+  align-items: stretch;
+  flex: 1;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.station-col-left,
+.station-col-right {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: clamp(8px, 1.2vh, 14px);
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* ─── Station A: Place-Value Tile Supply Items ──────────────────────────── */
+.tile-supply-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.tile-supply-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 6px 10px;
+  border-radius: var(--radius-md, 12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.tile-btn {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  border-radius: var(--radius-sm, 10px);
+  padding: 8px 14px;
+  min-height: 48px;
+  cursor: pointer;
+  border: none;
+  transition: var(--transition);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+  color: #ffffff;
+  box-sizing: border-box;
+}
+
+.tile-btn:hover:not(:disabled) {
+  transform: translateY(-1px);
+  filter: brightness(1.12);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
+}
+
+.tile-btn:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.tile-btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.tile-btn-info {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+}
+
+.tile-icon {
+  font-size: 1.35rem;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+.tile-label {
+  font-family: var(--font-display);
+  font-size: clamp(0.9rem, 1.1vw, 1.05rem);
+  font-weight: 800;
+  color: #fff;
+  white-space: nowrap;
+}
+
+.tile-count-pill {
+  font-family: var(--font-display);
+  font-size: clamp(0.95rem, 1.2vw, 1.15rem);
+  font-weight: 900;
+  background: rgba(0, 0, 0, 0.35);
+  padding: 3px 10px;
+  border-radius: var(--radius-pill, 9999px);
+  border: 1.5px solid rgba(255, 255, 255, 0.22);
+  color: #ffffff;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+/* ─── Area Model Visual Box ─────────────────────────────────────────────── */
+.area-model-visual-box {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+  gap: 8px;
+  padding: 12px;
+  background: rgba(15, 12, 40, 0.85);
+  border: 1.5px solid rgba(255, 255, 255, 0.14);
+  border-radius: var(--radius-md, 14px);
+  align-items: stretch;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.area-model-cell {
+  background: rgba(30, 24, 66, 0.9);
+  border: 2px solid rgba(255, 255, 255, 0.15);
+  border-radius: 12px;
+  padding: 10px 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  text-align: center;
+  transition: all 0.2s ease;
+}
+
+.area-model-cell.revealed {
+  border-color: var(--gold);
+  background: linear-gradient(135deg, rgba(251, 176, 59, 0.18) 0%, rgba(124, 92, 191, 0.25) 100%);
+  box-shadow: 0 0 14px rgba(251, 176, 59, 0.3);
+}
+
+.cell-place-tag {
+  font-size: 0.72rem;
+  font-weight: 800;
+  color: rgba(255, 255, 255, 0.65);
+  text-transform: uppercase;
+}
+
+.cell-chunk-num {
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: 1.15rem;
+  color: #ffffff;
+}
+
+.cell-prod-num {
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: 1.05rem;
+  color: #4ade80;
+  animation: bounceIn 0.3s ease;
+}
+
+/* ─── Interactive Calculation Box & Options ──────────────────────────────── */
+.calc-card-box {
+  background: rgba(22, 17, 54, 0.95);
+  border: 1.5px solid rgba(251, 176, 59, 0.4);
+  border-radius: var(--radius-md, 14px);
+  padding: 12px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4), inset 0 0 15px rgba(251, 176, 59, 0.06);
+  animation: slideUp 0.25s ease;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.calc-prompt-header {
+  font-family: var(--font-display);
+  font-size: clamp(0.95rem, 1.15vw, 1.12rem);
+  font-weight: 800;
+  color: #ffffff;
+  line-height: 1.35;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.calc-prompt-highlight {
+  color: var(--gold);
+}
+
+.calc-options-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 8px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.calc-option-btn {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1.5px solid rgba(255, 255, 255, 0.18);
+  border-radius: var(--radius-sm, 10px);
+  color: #ffffff;
+  font-family: var(--font-display);
+  font-size: clamp(0.95rem, 1.2vw, 1.15rem);
+  font-weight: 900;
+  padding: 8px 12px;
+  cursor: pointer;
+  transition: all 0.18s ease;
+  min-height: 42px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+}
+
+.calc-option-btn:hover:not(:disabled) {
+  border-color: var(--gold);
+  background: rgba(251, 176, 59, 0.2);
+  color: #fcd34d;
+  transform: translateY(-1px);
+}
+
+.calc-option-btn.selected {
+  border-color: var(--gold);
+  background: rgba(251, 176, 59, 0.3);
+  color: #ffffff;
+}
+
+.calc-option-btn.correct {
+  border-color: #22c55e;
+  background: rgba(34, 197, 94, 0.4);
+  color: #86efac;
+  animation: bounceIn 0.3s ease;
+}
+
+.calc-option-btn.wrong {
+  border-color: #ef4444;
+  background: rgba(239, 68, 68, 0.35);
+  color: #fca5a5;
+}
+
+/* Carry & Write Decision Cards */
+.carry-decision-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.carry-decision-btn {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1.5px solid rgba(255, 255, 255, 0.14);
+  border-radius: var(--radius-sm, 10px);
+  padding: 8px 12px;
+  color: #ffffff;
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(0.88rem, 1.05vw, 0.98rem);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  transition: all 0.18s ease;
+  text-align: left;
+}
+
+.carry-decision-btn:hover:not(:disabled) {
+  border-color: var(--gold);
+  background: rgba(251, 176, 59, 0.15);
+  transform: translateY(-1px);
+}
+
+.carry-decision-btn.correct {
+  border-color: #22c55e;
+  background: rgba(34, 197, 94, 0.25);
+  color: #86efac;
+}
+
+.carry-decision-btn.wrong {
+  border-color: #ef4444;
+  background: rgba(239, 68, 68, 0.25);
+  color: #fca5a5;
+}
+
+/* ─── Running Calculation Bar ───────────────────────────────────────────── */
+.running-ratio-bar {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  background: rgba(255, 255, 255, 0.06);
+  padding: 8px 14px;
+  border-radius: var(--radius-md, 12px);
+  border: 1.5px solid rgba(255, 255, 255, 0.12);
+  text-align: center;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.running-ratio-text {
+  font-family: var(--font-display);
+  font-size: clamp(0.98rem, 1.25vw, 1.22rem);
+  font-weight: 800;
+  color: var(--gold);
+  line-height: 1.35;
+}
+
+
+/* ─── Station B: Digital Chalkboard Vertical Math ────────────────────────── */
+.chalkboard-calc-box {
+  background: radial-gradient(circle at 50% 30%, #1a173b 0%, #0d0a24 100%);
+  border: 2px solid rgba(255, 255, 255, 0.16);
+  border-radius: 16px;
+  padding: 14px 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.6), 0 8px 24px rgba(0, 0, 0, 0.4);
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.chalk-columns-header {
+  display: grid;
+  grid-template-columns: 32px repeat(4, 40px);
+  gap: 4px;
+  text-align: center;
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 0.76rem;
+  color: rgba(255, 255, 255, 0.6);
+  text-transform: uppercase;
+}
+
+.chalk-grid-math {
+  display: grid;
+  grid-template-columns: 32px repeat(4, 40px);
+  gap: 4px;
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: 1.6rem;
+  text-align: center;
+  align-items: center;
+}
+
+.chalk-cell {
+  height: 38px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+}
+
+.chalk-cell.active-col {
+  color: var(--gold);
+  background: rgba(251, 176, 59, 0.18);
+  border-radius: 8px;
+  box-shadow: 0 0 12px rgba(251, 176, 59, 0.4);
+  transform: scale(1.08);
+}
+
+.chalk-carry-bubble {
+  background: radial-gradient(circle, #fde047 0%, #f59e0b 100%);
+  color: #18181b;
+  border-radius: 50%;
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.86rem;
+  font-weight: 900;
+  box-shadow: 0 0 12px rgba(251, 176, 59, 0.8);
+  border: 1.5px solid #ffffff;
+  animation: pulseGlow 1.8s infinite ease-in-out;
+}
+
+.chalk-divider {
+  grid-column: 1 / -1;
+  height: 3px;
+  background: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.6) 20%, rgba(255, 255, 255, 0.6) 80%, transparent 100%);
+  border-radius: 2px;
+  margin: 3px 0;
+}
+
+.chalk-res-digit {
+  color: #4ade80;
+  font-weight: 900;
+  text-shadow: 0 0 10px rgba(74, 222, 128, 0.5);
+  animation: bounceIn 0.3s ease;
+}
+
+.chalk-res-digit.blank {
+  color: rgba(255, 255, 255, 0.2);
+  text-shadow: none;
+}
+
+/* ─── Station C: 2-Digit Vertical Board ─────────────────────────────────── */
+.shift-algorithm-table {
+  background: radial-gradient(circle at 50% 30%, #1c1840 0%, #0d0a24 100%);
+  border: 2px solid rgba(129, 140, 248, 0.35);
+  border-radius: 16px;
+  padding: 16px 18px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 5px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45);
+  font-family: var(--font-display);
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.shift-factor-line {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 1.7rem;
+  font-weight: 900;
+  color: #ffffff;
+  letter-spacing: 2px;
+}
+
+.shift-factor-line .op {
+  color: var(--gold);
+}
+
+.shift-row-display {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 8px;
+  font-size: 1.5rem;
+  font-weight: 900;
+  color: #ffffff;
+  letter-spacing: 2px;
+  width: 100%;
+}
+
+.shift-row-label {
+  font-size: 0.72rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.6);
+  margin-right: auto;
+}
+
+.shift-zero-box {
+  background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+  color: #ffffff;
+  border-radius: 6px;
+  padding: 0 6px;
+  box-shadow: 0 0 12px rgba(239, 68, 68, 0.7);
+  animation: pulseGlow 1.5s infinite ease-in-out;
+}
+
+/* ─── Station D: Spot Error List ────────────────────────────────────────── */
+.spot-steps-list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.spot-step-card {
+  padding: 8px 12px;
+  border-radius: var(--radius-md, 12px);
+  font-family: var(--font-display);
+  cursor: pointer;
+  transition: var(--transition);
+  border: 1.5px solid rgba(255, 255, 255, 0.18);
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--text-primary);
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  gap: 8px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.spot-step-card:hover:not(.selected-error) {
+  border-color: var(--gold);
+  transform: translateY(-1px);
+  background: rgba(255, 193, 7, 0.15);
+}
+
+.spot-step-card.selected-error {
+  background: rgba(76, 175, 80, 0.35);
+  border-color: var(--green);
+}
+
+.spot-step-card.selected-correct-step {
+  border-color: var(--red);
+  background: rgba(239, 83, 80, 0.3);
+}
+
+/* ─── Guide / Help Cards ────────────────────────────────────────────────── */
+.station-guide-card {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1.5px dashed rgba(255, 255, 255, 0.18);
+  border-radius: var(--radius-md, 12px);
+  padding: 10px 14px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.station-guide-text {
+  font-family: var(--font-body);
+  font-size: clamp(0.92rem, 1.1vw, 1.05rem);
+  color: var(--text-secondary);
+  line-height: 1.35;
+}
+
+/* ─── Success / Completion Panel ────────────────────────────────────────── */
+.station-success {
+  background: rgba(20, 20, 58, 0.95);
+  border: 2px solid rgba(34, 197, 94, 0.55);
+  border-radius: var(--radius-md, 14px);
+  padding: 12px 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  text-align: center;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.station-success .success-icon {
+  font-size: 1.8rem;
+  line-height: 1;
+}
+
+.station-success-msg {
+  font-family: var(--font-body);
+  font-size: clamp(0.95rem, 1.15vw, 1.1rem);
+  color: #ffffff;
+  line-height: 1.35;
+  font-weight: 700;
+}
+
+.station-success-actions {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.station-success-actions button {
+  padding: 8px 18px;
+  font-size: clamp(0.92rem, 1.1vw, 1.05rem);
+  font-weight: 800;
+  min-height: 44px;
+  flex: 1 1 120px;
+}
+
+/* ─── Station Action Buttons Row ────────────────────────────────────────── */
+.station-actions {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-start;
+  margin-top: auto;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.station-actions button {
+  padding: 8px 18px;
+  min-height: 44px;
+  flex: 1 1 105px;
+  font-size: clamp(0.92rem, 1.1vw, 1.05rem);
+  font-weight: 800;
+}
+
+/* ─── Responsive Media Queries ──────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .station-wrap {
+    padding: 10px 10px;
+    gap: 8px;
+  }
+  
+  .station-grid-2col {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+  
+  .station-col-left,
+  .station-col-right {
+    gap: 8px;
+  }
+  
+  .station-actions {
+    justify-content: stretch;
+    width: 100%;
+  }
+  
+  .station-actions button {
+    flex: 1 1 120px;
+    min-height: 42px;
+    padding: 6px 12px;
+    font-size: 0.88rem;
+    white-space: normal;
+  }
+
+  .station-success-actions button {
+    flex: 1 1 120px;
+    min-height: 42px;
+    padding: 6px 12px;
+    font-size: 0.88rem;
+    white-space: normal;
+  }
+}
+
+@media (max-width: 480px) {
+  .station-wrap {
+    padding: 8px 6px;
+    gap: 6px;
+  }
+  
+  .station-title {
+    font-size: 0.96rem;
+    line-height: 1.2;
+  }
+  
+  .station-target-box {
+    padding: 3px 8px;
+    gap: 5px;
+  }
+  
+  .station-target-label {
+    font-size: 0.75rem;
+  }
+
+  .station-target-num {
+    font-size: 1.15rem;
+  }
+
+  .tile-supply-item {
+    padding: 0;
+  }
+
+  .tile-btn {
+    padding: 6px 8px;
+    min-height: 38px;
+    gap: 4px;
+  }
+
+  .tile-btn-info {
+    gap: 4px;
+  }
+
+  .tile-icon {
+    font-size: 0.95rem;
+  }
+
+  .tile-label {
+    font-size: 0.82rem;
+    white-space: normal;
+    text-align: left;
+  }
+
+  .tile-count-pill {
+    padding: 2px 6px;
+    font-size: 0.72rem;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  .calc-card-box {
+    padding: 8px 10px;
+    gap: 8px;
+  }
+
+  .calc-prompt-header {
+    font-size: 0.88rem;
+    line-height: 1.25;
+  }
+
+  .calc-options-grid {
+    gap: 6px;
+  }
+
+  .calc-option-btn {
+    min-height: 38px;
+    padding: 6px 6px;
+    font-size: 0.92rem;
+    word-break: break-word;
+  }
+
+  .carry-decision-grid {
+    gap: 5px;
+  }
+
+  .carry-decision-btn {
+    padding: 6px 8px;
+    font-size: 0.8rem;
+    min-height: 38px;
+    white-space: normal;
+    word-break: break-word;
+    line-height: 1.25;
+  }
+  
+  .spot-step-card {
+    padding: 6px 8px;
+    min-height: 38px;
+    gap: 6px;
+  }
+
+  .spot-step-card span {
+    font-size: 0.85rem;
+  }
+  
+  .station-actions button,
+  .station-success-actions button {
+    min-height: 40px;
+    padding: 6px 8px;
+    font-size: 0.84rem;
+    flex: 1 1 calc(50% - 6px);
+    white-space: normal;
+    text-align: center;
+  }
+
+  /* Chalkboard responsive sizing */
+  .chalkboard-calc-box {
+    padding: 10px 8px;
+    border-radius: 12px;
+  }
+
+  .chalk-columns-header {
+    grid-template-columns: 24px repeat(4, minmax(26px, 1fr));
+    font-size: 0.68rem;
+  }
+
+  .chalk-grid-math {
+    grid-template-columns: 24px repeat(4, minmax(26px, 1fr));
+    font-size: 1.25rem;
+  }
+
+  .chalk-cell {
+    height: 30px;
+  }
+
+  .chalk-carry-bubble {
+    width: 22px;
+    height: 22px;
+    font-size: 0.72rem;
+  }
+
+  /* Shift table responsive sizing */
+  .shift-algorithm-table {
+    padding: 10px 10px;
+    border-radius: 12px;
+  }
+
+  .shift-factor-line {
+    font-size: 1.2rem;
+    letter-spacing: 1px;
+    gap: 6px;
+  }
+
+  .shift-row-display {
+    font-size: 1.15rem;
+    letter-spacing: 1px;
+    gap: 6px;
+  }
+
+  .shift-row-label {
+    font-size: 0.65rem;
+  }
+}
+
+
+
