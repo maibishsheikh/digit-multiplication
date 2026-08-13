@@ -5,6 +5,13 @@ import { STORY_PANELS } from '../../data/storyContent.js';
 import { useAudio } from '../../hooks/useAudio.js';
 import { storyNarration } from '../../utils/narration.js';
 
+import story1 from '../../assets/story/1.png';
+import story2 from '../../assets/story/2.png';
+import story3 from '../../assets/story/3.png';
+import story4 from '../../assets/story/4.png';
+
+const STORY_IMAGES = [story1, story2, story3, story4];
+
 function StoryImage({ panel }) {
   const [imgError, setImgError] = useState(false);
 
@@ -12,7 +19,7 @@ function StoryImage({ panel }) {
     setImgError(false);
   }, [panel.panel]);
 
-  const imgSrc = `/src/assets/story/${panel.panel + 1}.png`;
+  const imgSrc = STORY_IMAGES[panel.panel] || STORY_IMAGES[0];
 
   return (
     <div className="story-image-container">
@@ -34,6 +41,7 @@ function StoryImage({ panel }) {
     </div>
   );
 }
+
 
 export default function StoryPhase({ state, dispatch }) {
   const panel = STORY_PANELS[state.storyPanel] || STORY_PANELS[0];
